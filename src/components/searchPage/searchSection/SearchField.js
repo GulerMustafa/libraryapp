@@ -1,26 +1,22 @@
 import React, { useState } from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import { Box, TextField, Stack, Button } from "@mui/material";
 import axios from "axios";
 
-function IndexButton() {
+function SearchField({ onSearch }) {
   const [search, setSearch] = useState("");
-  const [dataBook, setDataBook] = useState([]);
 
   const handleClick = async () => {
     try {
       const searchBook = await axios.get(
         `https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyCRDyU7FA3id7G_wsGh7UDh8L_Hj2GfgTs`
       );
-      setDataBook(searchBook.data.items);
+      onSearch(searchBook.data.items);
     } catch (error) {
       console.error(error);
     }
   };
-  console.log(dataBook);
   return (
-    <div>
+    <Stack direction="row" spacing={2}>
       <Box
         sx={{
           width: 500,
@@ -36,11 +32,11 @@ function IndexButton() {
           onChange={(e) => setSearch(e.target.value)}
         />
         <Button variant="contained" onClick={handleClick}>
-          Contained
+          Search
         </Button>
       </Box>
-    </div>
+    </Stack>
   );
 }
 
-export default IndexButton;
+export default SearchField;
