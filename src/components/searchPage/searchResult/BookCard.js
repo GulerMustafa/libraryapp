@@ -9,50 +9,59 @@ import Typography from "@mui/material/Typography";
 export default function BookCard({ fillData }) {
   return (
     <>
-      {fillData && (
-        <Card sx={{ maxWidth: 200, mt: 5 }}>
-          <CardMedia
-            height="270"
-            component="img"
-            image={fillData[0].volumeInfo.imageLinks.smallThumbnail}
-            title=""
-          />
-          <CardContent>
+      {fillData &&
+        fillData.map((data, index) => (
+          <Card sx={{ maxWidth: 200, mt: 5 }} key={index}>
             <Typography
               gutterBottom
               variant="h5"
               component="div"
               sx={{ textAlign: "center" }}
             >
-              {fillData[0].volumeInfo.title}
+              {data.volumeInfo.title}
             </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ textAlign: "center" }}
-            >
-              {fillData[0].volumeInfo.subtitle}
-            </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ textAlign: "center" }}
-            >
-              {fillData[0].volumeInfo.subtitle}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button
-              size="small"
-              href={fillData[0].volumeInfo.infoLink}
-              target="_blank"
-            >
-              Preview
-            </Button>
-            <Button size="small">Details</Button>
-          </CardActions>
-        </Card>
-      )}
+            <CardMedia
+              height="270"
+              component="img"
+              image={data.volumeInfo.imageLinks.smallThumbnail}
+              title=""
+            />
+            <CardContent>
+              <Typography
+                gutterBottom
+                variant="subtitle1"
+                component="div"
+                sx={{ textAlign: "center" }}
+              >
+                {data.volumeInfo.authors}
+              </Typography>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ textAlign: "center" }}
+              >
+                {data.volumeInfo.subtitle}
+              </Typography>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ textAlign: "center" }}
+              >
+                {data.volumeInfo.subtitle}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button
+                size="small"
+                href={data.volumeInfo.infoLink}
+                target="_blank"
+              >
+                Preview
+              </Button>
+              <Button size="small">Details</Button>
+            </CardActions>
+          </Card>
+        ))}
     </>
   );
 }
