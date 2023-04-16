@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, TextField, Stack, Button } from "@mui/material";
+import { TextField, Stack, Button, Container, Box } from "@mui/material";
 import axios from "axios";
 
 function SearchField({ onSearch }) {
@@ -16,26 +16,31 @@ function SearchField({ onSearch }) {
     }
   };
   return (
-    <Stack direction="row" spacing={2}>
-      <Box
-        sx={{
-          width: 500,
-          maxWidth: "100%",
-          mt: 2,
-        }}
-      >
-        <TextField
-          fullWidth
-          label="Press Enter to Search"
-          id="fullWidth"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <Button variant="contained" onClick={handleClick}>
-          Search
-        </Button>
+    <Container fullWidth fixed>
+      <Box>
+        <Stack
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          spacing={2}
+          sx={{ m: 3 }}
+        >
+          <TextField
+            label="Which Book Are You Looking For ?"
+            id="fullWidth"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <Button
+            variant="contained"
+            onClick={handleClick}
+            sx={{ width: 100, height: 50 }}
+          >
+            Search
+          </Button>
+        </Stack>
       </Box>
-    </Stack>
+    </Container>
   );
 }
 
