@@ -35,10 +35,7 @@ export default function Footer() {
                 LinkedIn{" "}
               </a>
               |{" "}
-              <a
-                href="https://github.com/GulerMustafa"
-                target="blank"
-              >
+              <a href="https://github.com/GulerMustafa" target="blank">
                 Github
               </a>
             </Typography>

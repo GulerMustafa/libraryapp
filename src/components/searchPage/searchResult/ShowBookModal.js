@@ -51,8 +51,7 @@ export default function ShowBookModal({ open, onClose, fillData }) {
               textAlign: "center",
             }}
           >
-            {data?.volumeInfo.authors === true ||
-            data?.volumeInfo.authors != null ? (
+            {data?.volumeInfo.authors && (
               <Grid item xs>
                 <Card
                   sx={{
@@ -61,15 +60,12 @@ export default function ShowBookModal({ open, onClose, fillData }) {
                 >
                   <Typography variant="h6">Author</Typography>
                   <Typography variant="b">
-                    {data?.volumeInfo.authors && data?.volumeInfo.authors[0]}
+                    {data.volumeInfo.authors[0]}
                   </Typography>
                 </Card>
               </Grid>
-            ) : (
-              ""
             )}
-            {data?.volumeInfo.categories === true ||
-            data?.volumeInfo.categories != null ? (
+            {data?.volumeInfo.categories && (
               <Grid item xs>
                 <Card
                   sx={{
@@ -82,11 +78,8 @@ export default function ShowBookModal({ open, onClose, fillData }) {
                   </Typography>
                 </Card>
               </Grid>
-            ) : (
-              ""
             )}
-            {data?.volumeInfo.publishedDate === true ||
-            data?.volumeInfo.publishedDate != null ? (
+            {data?.volumeInfo.publishedDate && (
               <Grid item xs>
                 <Card
                   sx={{
@@ -99,12 +92,9 @@ export default function ShowBookModal({ open, onClose, fillData }) {
                   </Typography>
                 </Card>
               </Grid>
-            ) : (
-              ""
             )}
           </Grid>
-          {data?.volumeInfo.description === true ||
-          data?.volumeInfo.description != null ? (
+          {data?.volumeInfo.description && (
             <>
               {" "}
               <Typography
@@ -120,8 +110,6 @@ export default function ShowBookModal({ open, onClose, fillData }) {
                 {data?.volumeInfo.description}.
               </Typography>{" "}
             </>
-          ) : (
-            ""
           )}
         </Card>
       ))}
