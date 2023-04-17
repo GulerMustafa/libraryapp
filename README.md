@@ -11,6 +11,9 @@
 
 https://mui.com/
 
+## Used Materials
+
+Do not forget put your API_KEY in root folder ".env". Before it you must create .env file in root.
 
 # Getting Started with Create React App
 
