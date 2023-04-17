@@ -5,6 +5,7 @@ import bgFoto from "../../../assets/background.jpg";
 
 function SearchField({ onSearch }) {
   const [search, setSearch] = useState("");
+  let API = process.env.REACT_APP_API_KEY;
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       handleClick();
@@ -14,7 +15,7 @@ function SearchField({ onSearch }) {
   const handleClick = async () => {
     try {
       const searchBook = await axios.get(
-        `https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyCRDyU7FA3id7G_wsGh7UDh8L_Hj2GfgTs&maxResults=15`
+        `https://www.googleapis.com/books/v1/volumes?q=${search}&key=${API}&maxResults=15`
       );
       onSearch(searchBook.data.items);
       setSearch("");
