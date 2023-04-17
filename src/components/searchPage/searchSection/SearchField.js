@@ -5,7 +5,7 @@ import bgFoto from "../../../assets/background.jpg";
 
 function SearchField({ onSearch }) {
   const [search, setSearch] = useState("");
-  let API = process.env.REACT_APP_API_KEY;
+  let API = process.env.REACT_APP_API_KEY; // Comes from .env file. Please Create it in Root folder. Then write your API key inside it like: REACT_APP_API_KEY=##########
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       handleClick();
